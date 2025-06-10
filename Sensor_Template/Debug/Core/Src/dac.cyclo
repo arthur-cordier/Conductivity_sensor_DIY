@@ -1,0 +1,5 @@
+../Core/Src/dac.c:36:6:MX_DAC1_Init	4
+../Core/Src/dac.c:86:6:HAL_DAC_MspInit	3
+../Core/Src/dac.c:125:6:HAL_DAC_MspDeInit	2
+../Core/Src/dac.c:148:6:GenerateSineTable	2
+../Core/Src/dac.c:163:6:DAC_Start	1

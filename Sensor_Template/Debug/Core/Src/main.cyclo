@@ -1,0 +1,9 @@
+C:/Users/arthu/STM32Cube/Repository/STM32Cube_FW_U5_V1.7.0/Drivers/CMSIS/Include/core_cm33.h:2711:34:__NVIC_SystemReset	1
+../Core/Src/main.c:82:7:Calcul_Salinite	1
+../Core/Src/main.c:98:7:Calcul_Conductivite	1
+../Core/Src/main.c:115:7:AmplitudeToVoltage	1
+../Core/Src/main.c:128:5:main	7
+../Core/Src/main.c:281:6:SystemClock_Config	4
+../Core/Src/main.c:346:13:SystemPower_Config	2
+../Core/Src/main.c:374:5:_write	2
+../Core/Src/main.c:392:6:Error_Handler	0

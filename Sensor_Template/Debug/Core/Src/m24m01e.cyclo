@@ -1,0 +1,5 @@
+../Core/Src/m24m01e.c:29:19:M24M01E_Init	2
+../Core/Src/m24m01e.c:44:19:M24M01E_Clear	2
+../Core/Src/m24m01e.c:63:19:M24M01E_WriteSalinity	2
+../Core/Src/m24m01e.c:83:19:M24M01E_ReadSalinity	2
+../Core/Src/m24m01e.c:100:6:M24M01E_PrintAll	4
