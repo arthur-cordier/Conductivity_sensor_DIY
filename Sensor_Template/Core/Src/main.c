@@ -97,11 +97,13 @@ float Calcul_Salinite(float conductivite, float temperature) {
 
 float Calcul_Conductivite(float U1, float U4) {
 
-    const float Rs = 75.0f;                  	// Résistance de rétroaction en ohms (valeur mesurée)
-    const float N1 = 11.0f;						// Nombres de tours sur bobine 1
-    const float N4 = 11.0f;						// Nombres de tours sur bobine 2
-    const float L = 0.003f;                    	// Distance entre bobines (en mètres)
-    const float S = 0.00014741;            	    // Surface de contact (section du tube ou passe l'eau) → π*r^2 avec r=6.85mm, S = 147 mm^2
+    //const float Rs = 75.0f;                  	// Résistance de rétroaction en ohms (valeur mesurée)
+    const float Rs = 84.0f;
+	const float N1 = 10.0f;						// Nombres de tours sur bobine 1
+    const float N4 = 10.0f;						// Nombres de tours sur bobine 2
+    const float L = 0.0045f;                   	// Distance entre bobines (en mètres)
+    //const float S = 0.00014741;            	    // Surface de contact (section du tube ou passe l'eau) → π*r^2 avec r=6.85mm, S = 147 mm^2
+    const float S = 0.000141;
 
     float I4 = U4 / Rs;                         // Courant (loi d'Ohm)
 
@@ -111,13 +113,12 @@ float Calcul_Conductivite(float U1, float U4) {
     return sigma * 10.0f;                      // Conversion en mS/cm
 }
 
-
 float AmplitudeToVoltage(float amplitude_fft, uint16_t N, float vref)
 {
     float Ak = (2.0f / (float)N) * amplitude_fft;
     float tension = ((Ak * vref ) / 4096.0f) * 2;
 
-    return tension * 2; //2 car on veut le crete a crete
+    return tension * 2;
 }
 /* USER CODE END 0 */
 
@@ -239,8 +240,8 @@ int main(void)
 
         // Phase 4 : traitement FFT
         for (uint16_t i = 0; i < FFT_SAMPLE_SIZE; i++) {
-            adc4_in_f32[i] = (float32_t)adc4_raw_samples[2 * i];
-            adc4_out_f32[i] = (float32_t)adc4_raw_samples[2 * i + 1];
+            adc4_in_f32[i] = (float32_t)adc4_raw_samples[2*i];
+            adc4_out_f32[i] = (float32_t)adc4_raw_samples[2*i + 1];
         }
 
         arm_rfft_fast_f32(&fft_instance, adc4_in_f32, fft_output_in, 0);
@@ -248,13 +249,13 @@ int main(void)
 
         for (uint16_t i = 0; i < FFT_SAMPLE_SIZE / 2; i++)
         {
-            float re_in = fft_output_in[2 * i];
-            float im_in = fft_output_in[2 * i + 1];
+            float re_in = fft_output_in[2*i];
+            float im_in = fft_output_in[2*i + 1];
             fft_amplitude_in[i] = sqrtf(re_in * re_in + im_in * im_in);
 
-            float re_out = fft_output_out[2 * i];
-            float im_out = fft_output_out[2 * i + 1];
-            fft_amplitude_out[i] = sqrtf(re_out * re_out + im_out * im_out);
+            float re_out = fft_output_out[2*i];
+            float im_out = fft_output_out[2*i + 1];
+            fft_amplitude_out[i] = sqrtf(re_out*re_out + im_out*im_out);
         }
 
         // Extraction de l'amplitude à 10 kHz (index 330 si F=30kHz, N=2048)

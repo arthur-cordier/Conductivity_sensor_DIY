@@ -23,9 +23,9 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   ALLOC
   9 .ARM.attributes 00000036  00000000  00000000  000321d4  2**0
                   CONTENTS, READONLY
- 10 .debug_info   0003668b  00000000  00000000  0003220a  2**0
+ 10 .debug_info   0003668c  00000000  00000000  0003220a  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 11 .debug_abbrev 00005d81  00000000  00000000  00068895  2**0
+ 11 .debug_abbrev 00005d81  00000000  00000000  00068896  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
  12 .debug_aranges 00002120  00000000  00000000  0006e618  2**3
                   CONTENTS, READONLY, DEBUGGING, OCTETS
@@ -33,19 +33,19 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, READONLY, DEBUGGING, OCTETS
  14 .debug_macro  0003c793  00000000  00000000  00071fe1  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 15 .debug_line   00032069  00000000  00000000  000ae774  2**0
+ 15 .debug_line   0003206d  00000000  00000000  000ae774  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 16 .debug_str    0017943c  00000000  00000000  000e07dd  2**0
+ 16 .debug_str    0017943c  00000000  00000000  000e07e1  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 17 .comment      000000bc  00000000  00000000  00259c19  2**0
+ 17 .comment      000000bc  00000000  00000000  00259c1d  2**0
                   CONTENTS, READONLY
- 18 .debug_frame  0000a294  00000000  00000000  00259cd8  2**2
+ 18 .debug_frame  0000a294  00000000  00000000  00259cdc  2**2
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 19 .debug_line_str 0000006b  00000000  00000000  00263f6c  2**0
+ 19 .debug_line_str 0000006b  00000000  00000000  00263f70  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 20 .debug_loc    000036ee  00000000  00000000  00263fd7  2**0
+ 20 .debug_loc    000036ee  00000000  00000000  00263fdb  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 21 .debug_ranges 000000d0  00000000  00000000  002676c5  2**0
+ 21 .debug_ranges 000000d0  00000000  00000000  002676c9  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
 
 Disassembly of section .text:
@@ -2870,19 +2870,21 @@ float Calcul_Conductivite(float U1, float U4) {
  8001ada:	ed87 0a01 	vstr	s0, [r7, #4]
  8001ade:	edc7 0a00 	vstr	s1, [r7]
 
-    const float Rs = 75.0f;                  	// Résistance de rétroaction en ohms (valeur mesurée)
+    //const float Rs = 75.0f;                  	// Résistance de rétroaction en ohms (valeur mesurée)
+    const float Rs = 84.0f;
  8001ae2:	4b1d      	ldr	r3, [pc, #116]	@ (8001b58 <Calcul_Conductivite+0x84>)
  8001ae4:	627b      	str	r3, [r7, #36]	@ 0x24
-    const float N1 = 11.0f;						// Nombres de tours sur bobine 1
+	const float N1 = 10.0f;						// Nombres de tours sur bobine 1
  8001ae6:	4b1d      	ldr	r3, [pc, #116]	@ (8001b5c <Calcul_Conductivite+0x88>)
  8001ae8:	623b      	str	r3, [r7, #32]
-    const float N4 = 11.0f;						// Nombres de tours sur bobine 2
+    const float N4 = 10.0f;						// Nombres de tours sur bobine 2
  8001aea:	4b1c      	ldr	r3, [pc, #112]	@ (8001b5c <Calcul_Conductivite+0x88>)
  8001aec:	61fb      	str	r3, [r7, #28]
-    const float L = 0.003f;                    	// Distance entre bobines (en mètres)
+    const float L = 0.0045f;                   	// Distance entre bobines (en mètres)
  8001aee:	4b1c      	ldr	r3, [pc, #112]	@ (8001b60 <Calcul_Conductivite+0x8c>)
  8001af0:	61bb      	str	r3, [r7, #24]
-    const float S = 0.00014741;            	    // Surface de contact (section du tube ou passe l'eau) → π*r^2 avec r=6.85mm, S = 147 mm^2
+    //const float S = 0.00014741;            	    // Surface de contact (section du tube ou passe l'eau) → π*r^2 avec r=6.85mm, S = 147 mm^2
+    const float S = 0.000141;
  8001af2:	4b1c      	ldr	r3, [pc, #112]	@ (8001b64 <Calcul_Conductivite+0x90>)
  8001af4:	617b      	str	r3, [r7, #20]
 
@@ -2919,13 +2921,12 @@ float Calcul_Conductivite(float U1, float U4) {
  8001b50:	46bd      	mov	sp, r7
  8001b52:	f85d 7b04 	ldr.w	r7, [sp], #4
  8001b56:	4770      	bx	lr
- 8001b58:	42960000 	.word	0x42960000
- 8001b5c:	41300000 	.word	0x41300000
- 8001b60:	3b449ba6 	.word	0x3b449ba6
- 8001b64:	391a9212 	.word	0x391a9212
+ 8001b58:	42a80000 	.word	0x42a80000
+ 8001b5c:	41200000 	.word	0x41200000
+ 8001b60:	3b9374bc 	.word	0x3b9374bc
+ 8001b64:	3913d966 	.word	0x3913d966
 
 08001b68 <AmplitudeToVoltage>:
-
 
 float AmplitudeToVoltage(float amplitude_fft, uint16_t N, float vref)
 {
@@ -2954,7 +2955,7 @@ float AmplitudeToVoltage(float amplitude_fft, uint16_t N, float vref)
  8001bac:	ee77 7aa7 	vadd.f32	s15, s15, s15
  8001bb0:	edc7 7a04 	vstr	s15, [r7, #16]
 
-    return tension * 2; //2 car on veut le crete a crete
+    return tension * 2;
  8001bb4:	edd7 7a04 	vldr	s15, [r7, #16]
  8001bb8:	ee77 7aa7 	vadd.f32	s15, s15, s15
 }
@@ -3187,7 +3188,7 @@ int main(void)
  8001d06:	2300      	movs	r3, #0
  8001d08:	873b      	strh	r3, [r7, #56]	@ 0x38
  8001d0a:	e021      	b.n	8001d50 <main+0x180>
-            adc4_in_f32[i] = (float32_t)adc4_raw_samples[2 * i];
+            adc4_in_f32[i] = (float32_t)adc4_raw_samples[2*i];
  8001d0c:	8f3b      	ldrh	r3, [r7, #56]	@ 0x38
  8001d0e:	005b      	lsls	r3, r3, #1
  8001d10:	4a62      	ldr	r2, [pc, #392]	@ (8001e9c <main+0x2cc>)
@@ -3199,7 +3200,7 @@ int main(void)
  8001d22:	009b      	lsls	r3, r3, #2
  8001d24:	4413      	add	r3, r2
  8001d26:	edc3 7a00 	vstr	s15, [r3]
-            adc4_out_f32[i] = (float32_t)adc4_raw_samples[2 * i + 1];
+            adc4_out_f32[i] = (float32_t)adc4_raw_samples[2*i + 1];
  8001d2a:	8f3b      	ldrh	r3, [r7, #56]	@ 0x38
  8001d2c:	005b      	lsls	r3, r3, #1
  8001d2e:	3301      	adds	r3, #1
@@ -3239,7 +3240,7 @@ int main(void)
  8001d72:	86fb      	strh	r3, [r7, #54]	@ 0x36
  8001d74:	e04c      	b.n	8001e10 <main+0x240>
         {
-            float re_in = fft_output_in[2 * i];
+            float re_in = fft_output_in[2*i];
  8001d76:	8efb      	ldrh	r3, [r7, #54]	@ 0x36
  8001d78:	005b      	lsls	r3, r3, #1
  8001d7a:	4a4b      	ldr	r2, [pc, #300]	@ (8001ea8 <main+0x2d8>)
@@ -3247,7 +3248,7 @@ int main(void)
  8001d7e:	4413      	add	r3, r2
  8001d80:	681b      	ldr	r3, [r3, #0]
  8001d82:	61bb      	str	r3, [r7, #24]
-            float im_in = fft_output_in[2 * i + 1];
+            float im_in = fft_output_in[2*i + 1];
  8001d84:	8efb      	ldrh	r3, [r7, #54]	@ 0x36
  8001d86:	005b      	lsls	r3, r3, #1
  8001d88:	3301      	adds	r3, #1
@@ -3271,7 +3272,7 @@ int main(void)
  8001dba:	4413      	add	r3, r2
  8001dbc:	edc3 7a00 	vstr	s15, [r3]
 
-            float re_out = fft_output_out[2 * i];
+            float re_out = fft_output_out[2*i];
  8001dc0:	8efb      	ldrh	r3, [r7, #54]	@ 0x36
  8001dc2:	005b      	lsls	r3, r3, #1
  8001dc4:	4a39      	ldr	r2, [pc, #228]	@ (8001eac <main+0x2dc>)
@@ -3279,7 +3280,7 @@ int main(void)
  8001dc8:	4413      	add	r3, r2
  8001dca:	681b      	ldr	r3, [r3, #0]
  8001dcc:	613b      	str	r3, [r7, #16]
-            float im_out = fft_output_out[2 * i + 1];
+            float im_out = fft_output_out[2*i + 1];
  8001dce:	8efb      	ldrh	r3, [r7, #54]	@ 0x36
  8001dd0:	005b      	lsls	r3, r3, #1
  8001dd2:	3301      	adds	r3, #1
@@ -3288,7 +3289,7 @@ int main(void)
  8001dd8:	4413      	add	r3, r2
  8001dda:	681b      	ldr	r3, [r3, #0]
  8001ddc:	60fb      	str	r3, [r7, #12]
-            fft_amplitude_out[i] = sqrtf(re_out * re_out + im_out * im_out);
+            fft_amplitude_out[i] = sqrtf(re_out*re_out + im_out*im_out);
  8001dde:	edd7 7a04 	vldr	s15, [r7, #16]
  8001de2:	ee27 7aa7 	vmul.f32	s14, s15, s15
  8001de6:	edd7 7a03 	vldr	s15, [r7, #12]
