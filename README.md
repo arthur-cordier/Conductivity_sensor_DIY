@@ -1,6 +1,6 @@
 # Conductivity_sensor_DIY
 
-This project provides a **low-tech, open-source conductivity sensor** based on **inductive conductometry**. It is designed to be simple, accessible, and adaptable for educational, scientific, or environmental monitoring purposes.
+This project provides a **low-tech (<100€), open-source conductivity sensor** based on **inductive conductometry**. It is designed to be simple, accessible, and adaptable for educational, scientific, or environmental monitoring purposes.
 
 ## Overview
 
